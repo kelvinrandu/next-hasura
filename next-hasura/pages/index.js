@@ -1,16 +1,19 @@
 import Head from "next/head";
 import { useItems } from "../graphql/hooks";
 import { withApollo } from "../graphql/apollo";
-import Image from "next/image";
 import { Text, Flex, Spinner } from "@chakra-ui/react";
-import styles from "../styles/Home.module.css";
+import App from "../components/App";
 
 const Home = () => {
   const { data, loading } = useItems();
 
   const allItems = data ? data.items : [];
   return (
-    <div className={styles.container}>
+    <App width="full" maxWidth="1280px" mx="auto" px={6} py={6}>
+      <Text mb={2} fontSize="sm">
+        {"Active "}
+        <b>{"Items"}</b>
+      </Text>
       {loading ? (
         <Flex pt={24} align="center" justify="center">
           <Spinner size="xl" label="Loading items" />
@@ -24,7 +27,7 @@ const Home = () => {
           )}
         </>
       )}
-    </div>
+    </App>
   );
 };
 export default withApollo(Home, {
