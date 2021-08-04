@@ -4,11 +4,11 @@ import { ProvideAuth } from "../utils/auth";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ProvideAuth>
+
       <ChakraProvider>
         <Component {...pageProps} />
       </ChakraProvider>
-    </ProvideAuth>
+  
   );
 }
 
